@@ -13,7 +13,7 @@ Leaflet plugin for create colored icons
 
 | Property        | Description            | Default Value | Possible  values                                     |
 | --------------- | ---------------------- | ------------- | ---------------------------------------------------- |
-| iconSize        | Name of the icon       | 'home'        | Size of the icon                                     |
+| iconSize        | Name of the icon       | [25, 25]      | Size of the icon                                     |
 | iconUrl         | Url of the icon        | ''            | Your image |
 | color           | Color of the icon      | '#000000'     | Color to hex value (#ff0000) or rgb value (rgb(255, 0, 0)) |
 
@@ -26,3 +26,8 @@ let iconBuilding = L.colorIcon({
   color: "#3f39b6"
 });
 ````
+
+ColorIcon inherits from L.DivIcon, it allows to generate a css filter for create colored icon
+
+## License
+Leaflet.ColorIcon is licensed under the MIT License - http://opensource.org/licenses/mit-license.html.
