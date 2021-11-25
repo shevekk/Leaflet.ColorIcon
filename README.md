@@ -2,7 +2,7 @@
 Leaflet plugin for create colored icons
 
 ## Screenshots
-![ColorIcon screenshot](https://github.com/shevekk/Leaflet.ColorIcon/tree/main/screenshots/capture.png)
+![ColorIcon screenshot](https://raw.github.com/shevekk/Leaflet.ColorIcon/tree/main/screenshots/capture.png)
 
 <a href="http://dataexplorer.hd.free.fr/Leaflet.ColorIcon/examples/basic/" target="_blank">Demo</a> 
 
