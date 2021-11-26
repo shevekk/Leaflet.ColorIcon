@@ -27,7 +27,9 @@ let iconBuilding = L.colorIcon({
 });
 ````
 
-ColorIcon inherits from L.DivIcon, it allows to generate a css filter for create colored icon
+ColorIcon inherits from L.DivIcon, it allows to generate a css filter for create colored icon.
+
+Your base icon image must be black to make the colorization work.
 
 ## License
 Leaflet.ColorIcon is licensed under the MIT License - http://opensource.org/licenses/mit-license.html.
