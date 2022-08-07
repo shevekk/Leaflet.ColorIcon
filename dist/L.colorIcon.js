@@ -316,7 +316,7 @@ L.ColorIcon = L.DivIcon.extend({
       color: "#ff0000",
       html : "",
       filter : "filter : ",
-      iconUrlShadow: "",
+      shadowUrl: "",
       shadowSize:   [25, 25],
       shadowAnchor: [0, 0],
       shadowColor: "#000000",
@@ -343,7 +343,7 @@ L.ColorIcon = L.DivIcon.extend({
       ${this.options.filter}`;
       
     
-    if(this.options.iconUrlShadow) {
+    if(this.options.shadowUrl) {
       // Icon with Shadow
       const shadowColorObj = new LeafletColorIconColorObj(this.options.shadowColor);
       const shadowSolver = new LeafletColorIconSolver(shadowColorObj);
@@ -363,7 +363,7 @@ L.ColorIcon = L.DivIcon.extend({
       ${this.options.shadowfilter}`;
       
       this.options.html = `
-        <img src='${this.options.iconUrlShadow}' style='${markerHtmlStyleShadow}'/>
+        <img src='${this.options.shadowUrl}' style='${markerHtmlStyleShadow}'/>
         <img src="${this.options.iconUrl}" style="${markerHtmlStyle}" />
       `;
     }
