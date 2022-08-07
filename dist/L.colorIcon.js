@@ -315,7 +315,12 @@ L.ColorIcon = L.DivIcon.extend({
       iconUrl: "",
       color: "#ff0000",
       html : "",
-      filter : "filter : "
+      filter : "filter : ",
+      iconUrlShadow: "",
+      shadowSize:   [25, 25],
+      shadowAnchor: [0, 0],
+      shadowColor: "#000000",
+      shadowfilter : "filter : ",
   },
 
   initialize: function (options) {
@@ -330,13 +335,42 @@ L.ColorIcon = L.DivIcon.extend({
 
     let markerHtmlStyle = `
       display: block;
+      position: absolute;
       width : ${this.options.iconSize[0]}px;
       height : ${this.options.iconSize[1]}px;
       left: -${this.options.iconSize[0]/2}px;
       top: -${this.options.iconSize[1]/2}px;
       ${this.options.filter}`;
-
-    this.options.html = `<img src="${this.options.iconUrl}" style="${markerHtmlStyle}" />`;
+      
+    
+    if(this.options.iconUrlShadow) {
+      // Icon with Shadow
+      const shadowColorObj = new LeafletColorIconColorObj(this.options.shadowColor);
+      const shadowSolver = new LeafletColorIconSolver(shadowColorObj);
+      const shadowResultSolver = shadowSolver.solve();
+      this.options.shadowfilter = shadowResultSolver.filter;
+      
+      let left = (-this.options.shadowSize[0]/2) - this.options.shadowAnchor[0];
+      let top = (-this.options.shadowSize[1]/2) - this.options.shadowAnchor[1];
+      
+      let markerHtmlStyleShadow = `
+      display: block;
+      position: absolute;
+      width : ${this.options.shadowSize[0]}px;
+      height : ${this.options.shadowSize[1]}px;
+      left: ${left}px;
+      top: ${top}px;
+      ${this.options.shadowfilter}`;
+      
+      this.options.html = `
+        <img src='${this.options.iconUrlShadow}' style='${markerHtmlStyleShadow}'/>
+        <img src="${this.options.iconUrl}" style="${markerHtmlStyle}" />
+      `;
+    }
+    else {
+      // Icon without Shadow
+      this.options.html = `<img src="${this.options.iconUrl}" style="${markerHtmlStyle}" />`;
+    }
 
     L.DivIcon.prototype.initialize.call(this, options);
   },

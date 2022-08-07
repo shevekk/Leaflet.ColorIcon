@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Icon Color Markers Example: Shadow</title>
+  <meta charset="utf-8" />
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+  
+</head>
+<body>
+  <div id="map" style="width: 800px; height: 600px"></div>
+  
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  <script src="../../dist/L.colorIcon.js"></script>
+  
+  <script>
+    var map = L.map('map').setView([47.1299, 4.4000], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+	}).addTo(map);
+		
+	let iconBuilding = L.colorIcon({
+      iconSize : [30, 30],
+      popupAnchor : [0, -15],
+      iconUrl: "img/building-solid.svg",
+	  iconUrlShadow: "img/building-solid.svg",
+	  shadowAnchor: [2, 2],
+	  shadowSize: [30, 30],
+      color: "#3f39b6"
+    });
+	
+	let iconBuildingRed = L.colorIcon({
+      iconSize : [40, 40],
+      popupAnchor : [0, -20],
+      iconUrl: "img/building-solid.svg",
+	  iconUrlShadow: "img/building-solid.svg",
+	  shadowAnchor: [-3, -1],
+	  shadowSize: [40, 40],
+	  shadowColor: "#664848",
+      color: "rgb(255, 0, 0)"
+    });
+	
+	let iconMonument = L.colorIcon({
+      iconSize : [20, 33],
+      popupAnchor : [0, -20],
+      iconUrl: "img/monument-solid.png",
+	  iconUrlShadow: "img/monument-solid.png",
+	  shadowAnchor: [-2, 3],
+	  shadowSize: [22, 35],
+	  shadowColor: "#16460e",
+      color: "#3a890d"
+    });
+	
+	L.marker([48.3708, 4.8120], {icon: iconBuilding}).addTo(map);
+	L.marker([46.8451, 2.999], {icon: iconBuilding}).addTo(map);
+	
+	L.marker([47.5172, 3.3837], {icon: iconBuildingRed}).addTo(map);
+	
+	L.marker([48.5172, 5.154], {icon: iconMonument}).addTo(map);
+
+ </script>
+</body>
+</html>
